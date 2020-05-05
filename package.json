@@ -1,6 +1,6 @@
 {
   "name": "dnssd",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Bonjour/Avahi-like service discovery in pure JavaScript",
   "keywords": [
     "bonjour",
@@ -10,7 +10,7 @@
   ],
   "author": "Sterling DeMille <sterlingdemille+npm@gmail.com>",
   "license": "MIT",
-  "repository": "https://github.com/DeMille/dnssd.js",
+  "repository": "https://github.com/bengy/dnssd.js",
   "main": "index.js",
   "devDependencies": {
     "babel-cli": "^6.16.0",

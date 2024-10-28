@@ -90,7 +90,13 @@ class TimerContainer {
    * @param {number}   delay
    */
   setLazy(...args) {
-    const delay = args.pop();
+    let delay = args.pop();
+    const MAX_DELAY = 2147483647;
+    if(delay > MAX_DELAY) {
+      //console.warn(`A delay értéke túl magas: ${delay}, csökkentés a maximálisra: ${MAX_DELAY}`);
+      delay = MAX_DELAY;
+    }
+
     const fn = args.pop();
     const id = (args.length) ? args.pop() : uniqueId();
 

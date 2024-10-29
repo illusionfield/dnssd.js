@@ -1,6 +1,7 @@
 let counter = 0;
 const uniqueId = () => ++counter;
 
+const MAX_DELAY = 2147483647;
 
 /**
  * TimerContainer is a convenience wrapper for setting/clearing timers
@@ -66,7 +67,12 @@ class TimerContainer {
    * @param {number}   delay
    */
   set(...args) {
-    const delay = args.pop();
+    // The delay value is too high: ${delay}, reducing it to the maximum: ${MAX_DELAY}
+    let delay = args.pop();
+    if(delay > MAX_DELAY) {
+      delay = MAX_DELAY;
+    }
+
     const fn = args.pop();
     const id = (args.length) ? args.pop() : uniqueId();
 
@@ -90,10 +96,9 @@ class TimerContainer {
    * @param {number}   delay
    */
   setLazy(...args) {
+    // The delay value is too high: ${delay}, reducing it to the maximum: ${MAX_DELAY}
     let delay = args.pop();
-    const MAX_DELAY = 2147483647;
     if(delay > MAX_DELAY) {
-      //console.warn(`A delay értéke túl magas: ${delay}, csökkentés a maximálisra: ${MAX_DELAY}`);
       delay = MAX_DELAY;
     }
 
